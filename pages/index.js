@@ -1,24 +1,34 @@
-// import { Button } from 'react-bootstrap'; // TODO: COMMENT IN FOR AUTH
-// import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
-// import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
+import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
+import { getAllCards } from '../api/cardData';
+import PlayingCard from '../components/Card';
 
 function Home() {
-  // const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
+  const [cards, setCards] = useState([]);
+  const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
 
-  const user = { displayName: 'Dr. T' }; // TODO: COMMENT OUT FOR AUTH
+  const getAllTheCards = () => {
+    getAllCards(user.uid).then(setCards);
+  };
+
+  useEffect(() => {
+    getAllTheCards();
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
+    <div className="text-center my-4">
+      <Link href="/card/new" passHref>
+        <Button>Add A Book</Button>
+      </Link>
+      {/* TODO: map over books here using BookCard component */}
+      <div className="d-flex flex-wrap">
+        {cards.map((card) => (
+          <PlayingCard key={card.firebaseKey} cardObj={card} onUpdate={getAllTheCards} />
+        ))}
+      </div>
     </div>
   );
 }
-
 export default Home;

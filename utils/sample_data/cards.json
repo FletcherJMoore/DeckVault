@@ -1,0 +1,52 @@
+{
+  "-MiBsBKGWFEU-yluJkL-": {
+    "title": "Blastoise",
+    "image": "https://m.media-amazon.com/images/I/514jbCIf5uL._AC_UF894,1000_QL80_.jpg",
+    "price": "24.99",
+    "releaseDate": "1996",
+    "description": "This water-type, stage 2 card has 100 HP and the Pokémon Power Rain Dance. This power allows you to attach a Water Energy card to a Water Pokémon during your turn, as often as you like. However, you can't use this power if Blastoise is confused, asleep, or paralyzed. The attack also does 40 damage plus 10 more damage for each Water Energy attached to Blastoise that isn't used to pay for the attack's energy cost.",
+    "genre_id": "-MiBsfuTafbEQ7eAULxV",
+    "firebaseKey": "-MiBsBKGWFEU-yluJkL-",
+    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  },
+  "-MiBsknNSQ6aBG1-2lQS": {
+    "title": "Michael Jordan",
+    "image": "https://images.production.sportscardinvestor.com/268_76_5-L",
+    "price": "24.99",
+    "releaseDate": "1991",
+    "description": "During his playing career, Michael Jordan, a guard, was an exceptionally talented shooter and passer and a tenacious defender. He earned the nickname “Air Jordan” because of his extraordinary leaping ability and acrobatic maneuvers, and his popularity reached heights few athletes have known.",
+    "genre_id": "-MiBt86VzkC-EGmJnxjm",
+    "firebaseKey": "-MiBsknNSQ6aBG1-2lQS",
+    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  },
+  "-MiBuCve4-r_H-RLUOh2": {
+    "title": "Red-Eyes Black Metal Dragon",
+    "image": "https://images.saymedia-content.com/.image/t_share/MTc2MjY4NTQzMjI1MzczODY5/powerful-yu-gi-oh-cards.jpg",
+    "price": "24.99",
+    "releaseDate": "2000",
+    "description": "Cannot be Normal Summoned/Set. Must first be Special Summoned (from your Deck) by Tributing Red-Eyes B. Dragon equipped with Metalmorph.",
+    "genre_id": "-MiBtwf1BwN9pGavQeR3",
+    "firebaseKey": "-MiBuCve4-r_H-RLUOh2",
+    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  },
+  "-MiBuU13EaKmGOMjJF-X": {
+    "title": "A Promised Land",
+    "image": "https://preview.redd.it/i-converted-yu-gi-oh-cards-into-magic-the-gathering-last-v0-ez22y6oar8ib1.jpg?width=640&crop=smart&auto=webp&s=c15e6c474ce31bc2203cb3cad43559cd5b9e3d6c",
+    "price": "24.99",
+    "releaseDate": "2002",
+    "description": "It is automatically destroyed if any of the five Forbidden One pieces do not exist in the Graveyard. Due to its near-invincibility and increasing strength, it serves as either a trump card that cannot be defeated or as a backup plan if too many Forbidden One pieces end up in the Graveyard.",
+    "genre_id": "-MiBuOfHv9NCKB_cneij",
+    "firebaseKey": "-MiBuU13EaKmGOMjJF-X",
+    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  },
+  "-MiBuqoYjFwbXyA8oiiw": {
+    "title": "Deadpool",
+    "image": "https://i.ebayimg.com/images/g/iHIAAOSwd6piD8K2/s-l1200.webp",
+    "price": "24.99",
+    "releaseDate": "1998",
+    "description": "Deadpool is a Marvel Comics character and anti-hero whose real name is Wade Wilson. He's a mercenary and assassin with a healing factor that allows him to regenerate body parts and recover from serious injuries. He's also known for his quick wit, charm, and big mouth. Deadpool is a skilled fighter who's proficient in multiple forms of martial arts, including Savate, and is also an expert swordsman and marksman. He's skilled with a variety of weapons, including katanas, knives, grenades, and guns.",
+    "genre_id": "-MiBulenBnY8by9Xn7q1",
+    "firebaseKey": "-MiBuqoYjFwbXyA8oiiw",
+    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  }
+}
