@@ -5,7 +5,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createCard, getAllCards, updateCard } from '../../api/cardData';
+import { createCard, updateCard } from '../../api/cardData';
+import { getGenres } from '../../api/genreData';
 
 const initialState = {
   image: '',
@@ -17,15 +18,15 @@ const initialState = {
 
 function CardForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  const [setCards] = useState([]);
+  const [genres, setGenres] = useState([]);
   const router = useRouter();
   const { user } = useAuth;
 
   useEffect(() => {
-    getAllCards(user.uid).then(setCards);
+    getGenres(user).then(setGenres);
 
     if (obj.firebaseKey) setFormInput(obj);
-  }, []);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,9 +39,9 @@ function CardForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateCard(formInput).then(() => router.push(`/card/${obj.firebaseKey}`));
+      updateCard(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, uid: user };
       createCard(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCard(patchPayload).then(() => {
@@ -55,11 +56,11 @@ function CardForm({ obj }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Card</h2>
 
       {/* TITLE INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Title" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Card Title" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter Card Title"
-          title="title"
+          name="title"
           value={formInput.title}
           onChange={handleChange}
           required
@@ -78,38 +79,64 @@ function CardForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* DESCRIPTION INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Description" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Description"
-          title="Description"
-          value={formInput.title}
-          onChange={handleChange}
-        />
-      </FloatingLabel>
-
       {/* PRICE INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Price" className="mb-3">
+      <FloatingLabel controlId="floatingInput4" label="Card Price" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter Price"
-          price="price"
-          value={formInput.title}
+          name="price"
+          value={formInput.price}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
       {/* RELEASE DATE INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Release Date" className="mb-3">
+      <FloatingLabel controlId="floatingInput5" label="Card Release Date" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Release Date"
-          price="price"
+          name="releaseDate"
           value={formInput.releaseDate}
           onChange={handleChange}
+          required
         />
+      </FloatingLabel>
+
+      {/* DESCRIPTION INPUT  */}
+      <FloatingLabel controlId="floatingInput3" label="Card Description" className="mb-3">
+        <Form.Control
+          as="textarea"
+          placeholder="Description"
+          name="description"
+          value={formInput.description}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
+      {/* GENRE SELECT  */}
+      <FloatingLabel controlId="floatingSelect" label="Genre">
+        <Form.Select
+          aria-label="Genre"
+          name="genre_id"
+          onChange={handleChange}
+          className="mb-3"
+          value={obj.genre_id}
+          required
+        >
+          <option value="">Select an Genre</option>
+          {
+            genres.map((g) => (
+              <option
+                key={g.firebaseKey}
+                value={g.firebaseKey}
+              >
+                {g.name}
+              </option>
+            ))
+          }
+        </Form.Select>
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
@@ -125,6 +152,7 @@ CardForm.propTypes = {
     price: PropTypes.string,
     releaseDate: PropTypes.string,
     description: PropTypes.string,
+    genre_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

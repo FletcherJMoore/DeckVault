@@ -1,27 +1,22 @@
 {
   "-MiBsfuTafbEQ7eAULxV": {
-    "genreName": "Pokémon",
-    "firebaseKey": "-MiBsfuTafbEQ7eAULxV",
-    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+    "name": "Pokémon",
+    "firebaseKey": "-MiBsfuTafbEQ7eAULxV"
   },
   "-MiBt86VzkC-EGmJnxjm": {
     "name": "Sports",
-    "firebaseKey": "-MiBt86VzkC-EGmJnxjm",
-    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+    "firebaseKey": "-MiBt86VzkC-EGmJnxjm"
   },
   "-MiBtwf1BwN9pGavQeR3": {
     "name": "Magic: The Gathering",
-    "firebaseKey": "-MiBtwf1BwN9pGavQeR3",
-    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+    "firebaseKey": "-MiBtwf1BwN9pGavQeR3"
   },
   "-MiBuOfHv9NCKB_cneij": {
     "name": "Yu-Gi-Oh! ",
-    "firebaseKey": "-MiBuOfHv9NCKB_cneij",
-    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+    "firebaseKey": "-MiBuOfHv9NCKB_cneij"
   },
   "-MiBulenBnY8by9Xn7q1": {
     "name": "Comic Book",
-    "firebaseKey": "-MiBulenBnY8by9Xn7q1",
-    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+    "firebaseKey": "-MiBulenBnY8by9Xn7q1"
   }
 } 

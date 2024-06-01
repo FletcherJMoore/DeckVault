@@ -22,6 +22,13 @@ export default function ViewCard() {
         <h5>
           Title: {cardDetails.title}
         </h5>
+        <p>Release Date: {cardDetails.releaseDate || ''}</p>
+        <p>Price: {cardDetails.price || ''}</p>
+        <div className="card-genres">
+          {cardDetails.genre?.map((g) => (
+            <p key={g.firebaseKey} className="text-white ms-5 details">Genre:{g.name}</p>
+          ))}
+        </div>
         <p>Description: {cardDetails.description || ''}</p>
         <hr />
       </div>

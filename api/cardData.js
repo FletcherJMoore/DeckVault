@@ -40,7 +40,7 @@ const getCardsByUserId = (uid) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
 

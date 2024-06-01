@@ -22,7 +22,6 @@ function PlayingCard({ cardObj, onUpdate }) {
         <Card.Title>{cardObj.title}</Card.Title>
         <p className="card-text bold"><span>Price:</span> ${cardObj.price}</p>
         <p className="card-text bold"><span>Release Date:</span> {cardObj.releaseDate}</p>
-        <p key={cardObj.uid} className="card-text bold">Genre: {cardObj.genre_id}</p>
         {/* LINK TO EDIT THE BOOK DETAILS  */}
         <Link href={`/card/edit/${cardObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
@@ -43,12 +42,6 @@ PlayingCard.propTypes = {
     releaseDate: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
-    genre_id: PropTypes.arrayOf(
-      PropTypes.shape({
-        firebaseKey: PropTypes.string,
-        name: PropTypes.string,
-      }),
-    ),
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
