@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getAllCards = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/cards.json`, {
+const getCards = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -32,8 +32,8 @@ const getSingleCard = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getCardsByUserId = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/cards.json?orderBy="uid"&equalTo="${uid}"`, {
+const getCardsByGenre = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards.json?orderBy="genre_id"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const updateCard = (payload) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => resolve(data))
     .catch(reject);
 });
 
@@ -82,11 +82,27 @@ const deleteCard = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const privateCards = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const personalCard = Object.values(data).filter((p) => p.private);
+      resolve(personalCard);
+    })
+    .catch(reject);
+});
+
 export {
-  getAllCards,
+  getCards,
   getSingleCard,
-  getCardsByUserId,
+  getCardsByGenre,
   createCard,
   updateCard,
   deleteCard,
+  privateCards,
 };

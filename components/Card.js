@@ -7,7 +7,7 @@ import { deleteCard } from '../api/cardData';
 
 function PlayingCard({ cardObj, onUpdate }) {
   const deleteThisCard = () => {
-    if (window.confirm(`Delete ${cardObj.title}?`)) {
+    if (window.confirm(`Delete ${cardObj.name}?`)) {
       deleteCard(cardObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -16,13 +16,12 @@ function PlayingCard({ cardObj, onUpdate }) {
     <Card style={{ width: '18rem', margin: '10px' }}>
       {/* MAKES CARD IMAGE A LINK TO CARD DETAILS  */}
       <Link href={`/card/${cardObj.firebaseKey}`} passHref>
-        <Card.Img variant="top" src={cardObj.image} alt={cardObj.title} style={{ height: '400px' }} />
+        <Card.Img variant="top" src={cardObj.image} alt={cardObj.name} style={{ height: '400px' }} />
       </Link>
       <Card.Body>
-        <Card.Title>{cardObj.title}</Card.Title>
+        <Card.Title>{cardObj.name}</Card.Title>
         <p className="card-text bold"><span>Price:</span> ${cardObj.price}</p>
-        <p className="card-text bold"><span>Release Date:</span> {cardObj.releaseDate}</p>
-        {/* LINK TO EDIT THE BOOK DETAILS  */}
+        <p className="card-text bold">{cardObj.private ? '🔒' : ''}</p>
         <Link href={`/card/edit/${cardObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
@@ -36,10 +35,11 @@ function PlayingCard({ cardObj, onUpdate }) {
 
 PlayingCard.propTypes = {
   cardObj: PropTypes.shape({
-    title: PropTypes.string,
+    name: PropTypes.string,
     image: PropTypes.string,
     price: PropTypes.string,
-    releaseDate: PropTypes.string,
+    genre: PropTypes.string,
+    private: PropTypes.bool,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,

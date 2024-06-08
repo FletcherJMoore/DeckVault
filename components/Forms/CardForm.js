@@ -10,20 +10,21 @@ import { getGenres } from '../../api/genreData';
 
 const initialState = {
   image: '',
-  title: '',
+  name: '',
   description: '',
   releaseDate: '',
   price: '',
+  private: false,
 };
 
 function CardForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [genres, setGenres] = useState([]);
   const router = useRouter();
-  const { user } = useAuth;
+  const { user } = useAuth();
 
   useEffect(() => {
-    getGenres(user).then(setGenres);
+    getGenres().then(setGenres);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -36,12 +37,12 @@ function CardForm({ obj }) {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (q) => {
+    q.preventDefault();
     if (obj.firebaseKey) {
       updateCard(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user };
+      const payload = { ...formInput, uid: user.uid };
       createCard(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateCard(patchPayload).then(() => {
@@ -55,19 +56,17 @@ function CardForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Card</h2>
 
-      {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Card Title" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter Card Title"
-          name="title"
-          value={formInput.title}
+          name="name"
+          value={formInput.name}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      {/* IMAGE INPUT  */}
       <FloatingLabel controlId="floatingInput2" label="Image URL" className="mb-3">
         <Form.Control
           type="url"
@@ -79,7 +78,6 @@ function CardForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* PRICE INPUT  */}
       <FloatingLabel controlId="floatingInput4" label="Card Price" className="mb-3">
         <Form.Control
           type="text"
@@ -91,7 +89,6 @@ function CardForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* RELEASE DATE INPUT  */}
       <FloatingLabel controlId="floatingInput5" label="Card Release Date" className="mb-3">
         <Form.Control
           type="text"
@@ -103,7 +100,6 @@ function CardForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* DESCRIPTION INPUT  */}
       <FloatingLabel controlId="floatingInput3" label="Card Description" className="mb-3">
         <Form.Control
           as="textarea"
@@ -115,7 +111,6 @@ function CardForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* GENRE SELECT  */}
       <FloatingLabel controlId="floatingSelect" label="Genre">
         <Form.Select
           aria-label="Genre"
@@ -127,19 +122,33 @@ function CardForm({ obj }) {
         >
           <option value="">Select an Genre</option>
           {
-            genres.map((g) => (
+            genres.map((a) => (
               <option
-                key={g.firebaseKey}
-                value={g.firebaseKey}
+                key={a.firebaseKey}
+                value={a.firebaseKey}
               >
-                {g.name}
+                {a.name}
               </option>
             ))
           }
         </Form.Select>
-      </FloatingLabel>
 
-      {/* SUBMIT BUTTON  */}
+      </FloatingLabel>
+      <Form.Check
+        className="text-white mb-3"
+        type="switch"
+        id="private"
+        name="private"
+        label="Is Private?"
+        checked={formInput.private}
+        onChange={(e) => {
+          setFormInput((prevState) => ({
+            ...prevState,
+            private: e.target.checked,
+          }));
+        }}
+      />
+
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Card</Button>
     </Form>
   );
@@ -147,11 +156,12 @@ function CardForm({ obj }) {
 
 CardForm.propTypes = {
   obj: PropTypes.shape({
-    title: PropTypes.string,
+    name: PropTypes.string,
     image: PropTypes.string,
     price: PropTypes.string,
     releaseDate: PropTypes.string,
     description: PropTypes.string,
+    private: PropTypes.bool,
     genre_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),

@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
-import { getCardsByUserId } from '../api/cardData';
+import { privateCards } from '../api/cardData';
 import PlayingCard from '../components/Card';
 
 function MyCards() {
-  const [getCardsByUid, setCardsByUid] = useState([]);
+  const [myCards, setMyCards] = useState([]);
   const { user } = useAuth();
 
-  const getAllCardsByUid = () => {
-    getCardsByUserId(user.uid).then(setCardsByUid);
+  const getPrivateCards = () => {
+    privateCards(user.uid).then(setMyCards);
   };
 
   useEffect(() => {
-    getAllCardsByUid();
+    getPrivateCards();
   }, []);
 
   return (
@@ -23,8 +23,8 @@ function MyCards() {
         <Button>Add Card</Button>
       </Link>
       <div className="d-flex flex-wrap">
-        {getCardsByUid.map((myCards) => (
-          <PlayingCard key={myCards.uid} cardObj={myCards} onUpdate={getAllCardsByUid} />
+        {myCards.map((q) => (
+          <PlayingCard key={q.firebaseKey} cardObj={q} onUpdate={getPrivateCards} />
         ))}
       </div>
     </div>

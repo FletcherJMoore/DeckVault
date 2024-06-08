@@ -16,19 +16,15 @@ export default function ViewCard() {
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
-        <img src={cardDetails.image} alt={cardDetails.title} style={{ width: '300px' }} />
+        <img src={cardDetails.image} alt={cardDetails.name} style={{ width: '300px' }} />
       </div>
-      <div className="text-white ms-5 details">
+      <div className="text-dark ms-5 details">
         <h5>
-          Title: {cardDetails.title}
+          Title: {cardDetails.name}
         </h5>
-        <p>Release Date: {cardDetails.releaseDate || ''}</p>
-        <p>Price: {cardDetails.price || ''}</p>
-        <div className="card-genres">
-          {cardDetails.genre?.map((g) => (
-            <p key={g.firebaseKey} className="text-white ms-5 details">Genre:{g.name}</p>
-          ))}
-        </div>
+        <p className="text-dark ms-5 details">Release Date: {cardDetails.releaseDate || ''}</p>
+        <p className="text-dark ms-5 details">Price: {cardDetails.price || ''}</p>
+        <p className="text-dark ms-5 details">Genre: {cardDetails.genre?.name}</p>
         <p>Description: {cardDetails.description || ''}</p>
         <hr />
       </div>
