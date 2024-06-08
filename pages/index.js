@@ -28,6 +28,7 @@ function Home() {
   const cardsByGenre = (firebaseKey) => {
     getCardsByGenre(firebaseKey).then(setFilteredCards);
     setIsFiltered(true);
+    console.warn(getCardsByGenre);
   };
 
   const handleClick = (firebaseKey) => {
