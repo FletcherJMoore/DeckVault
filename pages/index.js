@@ -1,24 +1,71 @@
-// import { Button } from 'react-bootstrap'; // TODO: COMMENT IN FOR AUTH
-// import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
-// import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
+import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { getCards, getCardsByGenre } from '../api/cardData';
+import PlayingCard from '../components/Card';
+import { getGenres } from '../api/genreData';
+import { useAuth } from '../utils/context/authContext';
 
 function Home() {
-  // const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
+  const [cards, setCards] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const [activeAllFilter, setActiveAllFilter] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(null);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const { user } = useAuth();
 
-  const user = { displayName: 'Dr. T' }; // TODO: COMMENT OUT FOR AUTH
+  const getAllTheCards = () => {
+    setIsFiltered(false);
+    setActiveFilter(null);
+    setActiveAllFilter(true);
+    getCards(user.uid).then(setCards);
+  };
+
+  const genreFilter = () => {
+    getGenres().then(setGenres);
+  };
+
+  const cardsByGenre = (firebaseKey) => {
+    getCardsByGenre(user.uid, firebaseKey).then(setFilteredCards);
+    setIsFiltered(true);
+  };
+
+  const handleClick = (firebaseKey) => {
+    setActiveAllFilter(false);
+    setActiveFilter(firebaseKey);
+    cardsByGenre(firebaseKey);
+  };
+
+  useEffect(() => {
+    genreFilter();
+    getAllTheCards();
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-    </div>
+    <>
+      <div className="all-cards-page">
+        <h1 className="text-light ms-5 details">All Cards</h1>
+        <div className="text-center">
+          <Button className={activeAllFilter ? 'selected' : 'not selected'} variant="dark" onClick={() => getAllTheCards()}>All</Button>
+          {genres.map((m) => (
+            <Button
+              key={m.firebaseKey}
+              variant="dark"
+              className={activeFilter === m.firebaseKey ? 'selected' : 'not selected'}
+              onClick={() => handleClick(m.firebaseKey)}
+            >{m.name}
+            </Button>
+          ))}
+        </div>
+        <div className="d-flex flex-wrap">
+          {isFiltered ? filteredCards.map((g) => (
+            <PlayingCard key={g.firebaseKey} cardObj={g} onUpdate={getAllTheCards} />
+          )) : cards.map((c) => (
+            <PlayingCard key={c.firebaseKey} cardObj={c} onUpdate={getAllTheCards} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
-
 export default Home;
