@@ -32,15 +32,18 @@ const getSingleCard = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getCardsByGenre = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/cards.json?orderBy="genre_id"&equalTo="${firebaseKey}"`, {
+const getCardsByGenre = (uid, firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      const personalCard = Object.values(data).filter((i) => i.genre_id === firebaseKey);
+      resolve(personalCard);
+    })
     .catch(reject);
 });
 

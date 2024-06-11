@@ -14,19 +14,19 @@ export default function ViewCard() {
   }, [firebaseKey]);
 
   return (
-    <div className="mt-5 d-flex flex-wrap">
-      <div className="d-flex flex-column">
-        <img src={cardDetails.image} alt={cardDetails.name} style={{ width: '300px' }} />
-      </div>
-      <div className="text-dark ms-5 details">
+    <div>
+      <div className="details-header-container">
         <h5>
           Title: {cardDetails.name}
         </h5>
-        <p className="text-dark ms-5 details">Release Date: {cardDetails.releaseDate || ''}</p>
-        <p className="text-dark ms-5 details">Price: {cardDetails.price || ''}</p>
-        <p className="text-dark ms-5 details">Genre: {cardDetails.genre?.name}</p>
+        <p>Release Date: {cardDetails.releaseDate || ''}</p>
+        <p>Price: {cardDetails.price || ''}</p>
+        <p>Genre: {cardDetails.genre?.name}</p>
         <p>Description: {cardDetails.description || ''}</p>
         <hr />
+      </div>
+      <div className="center-image">
+        <img src={cardDetails.image} alt={cardDetails.name} style={{ width: '300px' }} />
       </div>
     </div>
   );

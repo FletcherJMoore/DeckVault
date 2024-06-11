@@ -26,9 +26,8 @@ function Home() {
   };
 
   const cardsByGenre = (firebaseKey) => {
-    getCardsByGenre(firebaseKey).then(setFilteredCards);
+    getCardsByGenre(user.uid, firebaseKey).then(setFilteredCards);
     setIsFiltered(true);
-    console.warn(getCardsByGenre);
   };
 
   const handleClick = (firebaseKey) => {
@@ -45,8 +44,8 @@ function Home() {
   return (
     <>
       <div className="all-cards-page">
-        <h1>All Cards</h1>
-        <div className="genre-btn-contailer">
+        <h1 className="text-light ms-5 details">All Cards</h1>
+        <div className="text-center">
           <Button className={activeAllFilter ? 'selected' : 'not selected'} variant="dark" onClick={() => getAllTheCards()}>All</Button>
           {genres.map((m) => (
             <Button

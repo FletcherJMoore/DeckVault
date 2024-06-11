@@ -18,9 +18,34 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #0b255a;
 }
 
 .genre-btn-contailer {
   text-align: center;
+}
+
+.image-contailer {
+ text-align: right;
+ width: 1000px
+}
+.center-image {
+  width: 400px;
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.details-header-container {
+  margin: auto;
+  width: 70%;
+  padding: 50px;
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.details-contailer {
+ text-align: left;
+ color: white
 }
