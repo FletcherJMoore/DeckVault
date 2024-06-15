@@ -19,6 +19,8 @@ function MyCards() {
 
   return (
     <div className="text-center my-4">
+      <span className="myCards-blur" />
+      <span className="myCards-blur" />
       <Link passHref href="/card/new">
         <Button>Add Card</Button>
       </Link>

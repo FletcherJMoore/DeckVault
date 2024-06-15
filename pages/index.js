@@ -44,20 +44,22 @@ function Home() {
   return (
     <>
       <div className="all-cards-page">
-        <h1 className="text-light ms-5 details">All Cards</h1>
-        <div className="text-center">
-          <Button className={activeAllFilter ? 'selected' : 'not selected'} variant="dark" onClick={() => getAllTheCards()}>All</Button>
+        <span className="blur" />
+        <span className="blur" />
+        <h1 className="all-cards-header">All Cards</h1>
+        <div className="filter-buttons-container">
+          <Button className={activeAllFilter ? 'selected' : 'notSelected'} variant="dark" onClick={() => getAllTheCards()}>All</Button>
           {genres.map((m) => (
             <Button
               key={m.firebaseKey}
               variant="dark"
-              className={activeFilter === m.firebaseKey ? 'selected' : 'not selected'}
+              className={activeFilter === m.firebaseKey ? 'selected' : 'notSelected'}
               onClick={() => handleClick(m.firebaseKey)}
             >{m.name}
             </Button>
           ))}
         </div>
-        <div className="d-flex flex-wrap">
+        <div className="general-cards-container">
           {isFiltered ? filteredCards.map((g) => (
             <PlayingCard key={g.firebaseKey} cardObj={g} onUpdate={getAllTheCards} />
           )) : cards.map((c) => (
