@@ -31,7 +31,6 @@ export default function ViewCard() {
             <p>Description: {cardDetails.description || ''}</p>
             <hr />
           </div>
-
         </div>
       </div>
     </div>
