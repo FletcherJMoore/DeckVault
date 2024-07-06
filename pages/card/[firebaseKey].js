@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import viewCardDetails from '../../api/mergedData';
+import { viewCardDetails } from '../../api/mergedData';
 
 export default function ViewCard() {
   const [cardDetails, setCardDetails] = useState({});
   const router = useRouter();
-
-  // Making a call to the cards firebase key to update the URL
   const { firebaseKey } = router.query;
 
   useEffect(() => {

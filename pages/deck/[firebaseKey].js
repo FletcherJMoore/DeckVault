@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import PlayingCard from '../../components/Card';
-import viewDeckDetails from '../../api/mergedData';
+import { viewDeckDetails } from '../../api/mergedData';
 
 export default function ViewDeck() {
   const [deckDetails, setDeckDetails] = useState({});

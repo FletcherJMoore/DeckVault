@@ -22,7 +22,7 @@ function DeckForm({ obj }) {
     getCards(user.uid).then(setCards);
 
     if (obj.firebaseKey) setFormInput(obj);
-  }, []);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
