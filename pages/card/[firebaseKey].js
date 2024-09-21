@@ -16,17 +16,23 @@ export default function ViewCard() {
   return (
     <div>
       <div className="details-header-container">
-        <h5>
-          Title: {cardDetails.name}
-        </h5>
-        <p>Release Date: {cardDetails.releaseDate || ''}</p>
-        <p>Price: {cardDetails.price || ''}</p>
-        <p>Genre: {cardDetails.genre?.name}</p>
-        <p>Description: {cardDetails.description || ''}</p>
-        <hr />
-      </div>
-      <div className="center-image">
-        <img src={cardDetails.image} alt={cardDetails.name} style={{ width: '300px' }} />
+        <div className="card-detials-image">
+          <img src={cardDetails.image} alt={cardDetails.name} style={{ width: '300px' }} />
+        </div>
+        <div className="card-details">
+          <h2 className="card-details-title">
+            {cardDetails.name}
+          </h2>
+          <div className="card-details-sub-title">
+            <h4>About this card:</h4>
+            <p>Release Date: {cardDetails.releaseDate || ''}</p>
+            <p>Price: {cardDetails.price || ''}</p>
+            <p>Genre: {cardDetails.genre?.name}</p>
+            <p>Description: {cardDetails.description || ''}</p>
+            <hr />
+          </div>
+
+        </div>
       </div>
     </div>
   );
