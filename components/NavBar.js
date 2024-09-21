@@ -27,6 +27,7 @@ export default function NavBarAuth() {
               <Link passHref href="/profile">
                 <Nav.Link className="nav-link">Profile</Nav.Link>
               </Link>
+              {/* <Search /> */}
             </div>
             <Nav style={{ width: '25%' }}>
               <Button className="signOutButton" variant="danger" onClick={signOut}>Sign Out</Button>

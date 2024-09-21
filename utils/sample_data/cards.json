@@ -7,6 +7,7 @@
     "description": "This water-type, stage 2 card has 100 HP and the Pokémon Power Rain Dance. This power allows you to attach a Water Energy card to a Water Pokémon during your turn, as often as you like. However, you can't use this power if Blastoise is confused, asleep, or paralyzed. The attack also does 40 damage plus 10 more damage for each Water Energy attached to Blastoise that isn't used to pay for the attack's energy cost.",
     "private": true,
     "genre_id": "-MiBsfuTafbEQ7eAULxV",
+    "deck_id" : "-MiBsfuTafbEQ7eAULxV",
     "firebaseKey": "-MiBsBKGWFEU-yluJkL-",
     "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
   },
@@ -18,6 +19,7 @@
     "description": "During his playing career, Michael Jordan, a guard, was an exceptionally talented shooter and passer and a tenacious defender. He earned the nickname “Air Jordan” because of his extraordinary leaping ability and acrobatic maneuvers, and his popularity reached heights few athletes have known.",
     "private": false,
     "genre_id": "-MiBt86VzkC-EGmJnxjm",
+    "deck_id" : "-MiBt86VzkC-EGmJnxjm",
     "firebaseKey": "-MiBsknNSQ6aBG1-2lQS",
     "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
   },

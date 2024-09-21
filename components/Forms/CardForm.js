@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createCard, updateCard } from '../../api/cardData';
 import { getGenres } from '../../api/genreData';
+import { getDecks } from '../../api/deckData';
 
 const initialState = {
   image: '',
@@ -20,11 +21,13 @@ const initialState = {
 function CardForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [genres, setGenres] = useState([]);
+  const [decks, setDecks] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
     getGenres().then(setGenres);
+    getDecks(user.uid).then(setDecks);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -149,6 +152,29 @@ function CardForm({ obj }) {
         }}
       />
 
+      <FloatingLabel controlId="floatingSelect" label="Deck">
+        <Form.Select
+          aria-label="Deck"
+          name="deck_id"
+          onChange={handleChange}
+          className="mb-3"
+          value={obj.deck_id}
+        >
+          <option value="">Add card to a deck!</option>
+          {
+            decks.map((d) => (
+              <option
+                key={d.firebaseKey}
+                value={d.firebaseKey}
+              >
+                {d.name}
+              </option>
+            ))
+          }
+        </Form.Select>
+
+      </FloatingLabel>
+
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Card</Button>
     </Form>
   );
@@ -163,6 +189,7 @@ CardForm.propTypes = {
     description: PropTypes.string,
     private: PropTypes.bool,
     genre_id: PropTypes.string,
+    deck_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

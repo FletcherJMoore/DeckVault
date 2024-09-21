@@ -1,0 +1,15 @@
+{
+  "-MiBsfuTafbEQ7eAULxV" : {
+    "firebaseKey" : "-MiBsfuTafbEQ7eAULxV",
+    "name" : "Pokémon",
+    "image": "https://m.media-amazon.com/images/I/81bxESE-MgL.jpg",
+    "uid": "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  },
+
+  "-MiBt86VzkC-EGmJnxjm" : {
+    "firebaseKey" : "-MiBt86VzkC-EGmJnxjm",
+    "name" : "Basketball",
+    "image" : "https://i.pinimg.com/736x/47/a0/87/47a087121988c00d5468f8814cc13d32.jpg",
+    "uid" : "V8Fmq5t5VXY2qmhu3CoD2ym7Klm1"
+  }
+}

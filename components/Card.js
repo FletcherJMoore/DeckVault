@@ -15,7 +15,6 @@ function PlayingCard({ cardObj, onUpdate }) {
   return (
     <div className="cards">
       <Card>
-        {/* MAKES CARD IMAGE A LINK TO CARD DETAILS  */}
         <Card.Img variant="top" src={cardObj.image} alt={cardObj.name} style={{ height: '400px' }} />
         <Card.Body className="card-body">
           <div className="card-title">
