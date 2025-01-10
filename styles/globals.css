@@ -39,7 +39,7 @@ body {
 }
 
 .all-cards-header {
-  color: white;
+  color: white !important;
   font-family: 'Poppins'
 }
 .general-cards-container {
@@ -72,27 +72,27 @@ body {
 
 .selected {
   border-style: solid;
-  border-color: #fff;
-  color: #fff;
+  border-color: #fff !important;
+  color: #fff !important;
   background-color: none;
   font-family: 'Poppins' !important;
 }
 
 .selected:hover {
-  border-color: black;
+  border-color: black !important;
 }
 
 .notSelected {
   border-style: solid;
-  border-color: #fff;
+  border-color: #fff !important;
   border-width: 2px;
-  color: #fff;
+  color: #fff !important;
   background-color: none;
   font-family: 'Poppins' !important;
 }
 
 .notSelected:hover {
-  border-color: black;
+  border-color: black !important;
 }
 
 Button {
@@ -102,13 +102,13 @@ Button {
   margin: 5px;
   width: auto;
   height: auto;
-  background: gray;
+  background: gray !important;
   border: none;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   padding: 0 0 5px 0;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px black !important;
 }
 
 .navbar {
@@ -122,7 +122,7 @@ background-color: none;
   flex-direction: row;
   justify-content: center;
   gap: 3rem;
-  color: white;
+  color: white !important;
 }
 
 .nav-link {
@@ -140,23 +140,23 @@ background-color: none;
   position: absolute;
   right: 1px;
   margin-left: auto; 
-  border-color: #fff;
+  border-color: #fff !important;
   border-style: solid;
   border-width: 3px;
   border-radius: 25px;
-  color: #fff;
+  color: #fff !important;
   font-family:'Poppins' !important;
 }
 
 .blur {
   position: absolute;
-  box-shadow: 0 0 1000px 50px white;
+  box-shadow: 0 0 1000px 50px white !important;
   z-index: -100;
 }
 
 .myCards-blur {
   position: absolute;
-  box-shadow: 0 0 1000px 50px white;
+  box-shadow: 0 0 1000px 50px white !important;
   z-index: -100;
 }
 .cards {
@@ -166,7 +166,7 @@ background-color: none;
   margin: 10px;
   border-radius: 20px;
   overflow: hidden;
-  border: 8px solid #ffffff;
+  border: 8px solid #ffffff !important;
   font-family: 'Poppins';
 }
 
@@ -183,10 +183,10 @@ background-color: none;
   top: 0;
   right: -100%;
   position: absolute;
-  background: #1f3d4738;
+  background: #1f3d4738 !important;
   backdrop-filter: blur(5px);
   border-radius: 20px;
-  color: white;
+  color: white !important;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -200,18 +200,20 @@ background-color: none;
 .card-title {
   text-transform: uppercase;
   font-size: 20px;
-  font-family: 'Poppins'
+  font-family: 'Poppins';
+  color: #fff !important
 }
 
 .card-sub-title {
   text-transform: capitalize;
   font-size: 14px;
-  font-family: 'Poppins'
+  font-family: 'Poppins';
+  color: #fff !important
 }
 
 
 .card-buttons {
-  color: black;
+  color: black !important;
   padding: 10px 20px;
   border-radius: 5px;
   text-transform: capitalize;
@@ -226,12 +228,13 @@ background-color: none;
   line-height: 25px;
   margin: 40px 0;
   font-family: 'Poppins';
+  color: #fff !important;
 }
 
 .card-detials-image {
   margin: 10px;
   border-radius: 20px;
-  border: 8px solid #ffffff;
+  border: 8px solid #ffffff !important;
   width: 100%;
   height: 100%;
 }
@@ -241,19 +244,19 @@ background-color: none;
   text-transform: capitalize;
   padding-left: 20px;
   position: relative;
-  color: white;
+  color: white !important;
   margin: 1rem 0;
   font-family: 'Poppins';
 }
 
 .card-details-sub-title {
   padding-left: 20px;
-  color: #fff;
+  color: #fff !important;
 }
 
 .profile-container {
   text-align: center;
-  color: white;
+  color: white !important;
 }
 
 .deck-details-header-container {
@@ -269,7 +272,7 @@ background-color: none;
 .deck-detials-image {
   margin: 10px;
   border-radius: 20px;
-  border: 8px solid #ffffff;
+  border: 8px solid #ffffff !important;
   width: 100%;
   height: 100%;
 }
@@ -279,7 +282,7 @@ background-color: none;
   text-transform: capitalize;
   padding-left: 20px;
   position: relative;
-  color: white;
+  color: white !important;
   margin: 1rem 0;
   font-family: 'Poppins';
 }
