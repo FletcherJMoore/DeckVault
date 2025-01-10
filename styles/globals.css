@@ -287,6 +287,11 @@ background-color: none;
   font-family: 'Poppins';
 }
 
+.deck-cards-container {
+  display: flex;
+  flex-direction: wrap;
+}
+
 .profile-deck-container {
   display: flex;
   flex-direction: row;
