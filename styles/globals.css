@@ -127,7 +127,7 @@ background-color: none;
 
 .nav-link {
   width: 300px;
-  color: #fff;
+  color: #fff  !important;
   font-size: large;
   font-family: 'Poppins';
 }
@@ -297,7 +297,4 @@ background-color: none;
   justify-content: center;
   font-family: 'Poppins';
   color: transparent;
-}
-
-.decks-btn {
 }
