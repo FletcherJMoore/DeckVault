@@ -102,7 +102,7 @@ Button {
   margin: 5px;
   width: auto;
   height: auto;
-  background: gray !important;
+  background: gray;
   border: none;
   font-size: 20px;
   font-weight: bold;
